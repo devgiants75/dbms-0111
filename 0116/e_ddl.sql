@@ -67,3 +67,11 @@ create table `korea_db`.`buy` (
     amount int,
     quantity smallint
 );
+
+-- 3. 생성된 테이블 확인
+-- 코리아 디비 데이터베이스 안의 buy테이블의 모든(*) 컬럼을 가지고 온다.
+select * from `korea_db`.`buy`; 
+
+-- 4. 생성된 데이터베이스 & 테이블 삭제
+drop table `korea_db`.`buy`;
+drop database `korea_db`;
