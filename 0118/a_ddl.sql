@@ -36,4 +36,93 @@ drop database database_name;
 show databases;
 
 # ----- 테이블 -----
-# 
+# 1. 테이블 생성(create table)
+# : 새로운 테이블을 생성, 테이블에 저장될 데이터의 형태와 특성을 정의
+# : >> 데이터타입, 제약조건, 기본값 등을 설정 가능
+# 기본 형태
+# create table table_name (
+	# column1 datatype [optionals],
+	# column2 datatype [optionals],
+	# column3 datatype [optionals],
+	# ...
+# )
+# optionals: 컬럼에 적용할 선택적 특성 - not null지정, 기본값 설정 등
+
+create database example;
+use example;
+create table students (
+	student_id int,
+    name varchar(100) not null,
+    age int not null,
+	major varchar(100)
+);
+
+# 2. 테이블 구조 조회(describe, desc)
+# : 테이블의 구조
+# : 테이블에 정의된 컬럼, 데이터 타입, 키 정보(제약조건) 등을 조회하는데 사용
+use example;
+-- 왼쪽 Navigator의 Schemas 필드의 데이터베이스명을 더블 클릭
+# 기본 형태
+# describe table_name;
+describe `students`;
+# Field(각 컬럼의 이름), Type(각 컬럼의 데이터 타입), Null(Null 허용 여부)
+# Key(각 컬럼의 제약사항-키), Default(기본값 지정), Extra(제약사항-추가옵션)
+desc `students`;
+
+# 3. 테이블 수정(alter table)
+# : 이미 존재하는 테이블의 구조를 변경하는 데 사용
+# : 컬럼을 추가, 수정, 삭제 또는 제약 조건을 추가, 수정, 삭제 
+
+# a. 컬럼 추가(add column)
+# 기본형태: alter table table_name 
+#         add column_name column_definition;
+# 기존의 학생 테이블에 email 컬럼을 추가
+alter table `students`
+add email varchar(255);
+
+# b. 컬럼 수정(modify column)
+# 기본 형태: alter table table_name
+#          modify column_name new_column_definition;
+alter table `students`
+modify email varchar(100);
+
+# c. 컬럼 삭제 (drop column)
+# 기본 형태: alter table table_name drop column_name;
+alter table `students` drop email;
+
+desc `students`;
+
+# d. 제약 조건 추가
+# --------------
+
+# 4. 테이블 삭제(drop table)
+# : 데이터베이스에서 해당 테이블을 영구적으로 삭제
+# 기본 형태
+# : drop table [if exists] table_name;
+
+# if exists
+# : 선택적 키워드, 테이블이 존재하는 경우에만 삭제를 수행
+# drop문은 해당 삭제하고자하는 형태가 존재하지 않을 경우 오류
+# : if exists 사용 시 존재할 때만 삭제하기 때문에 오류 X
+
+drop table if exists `lectures`; -- 오류 발생 시 해당 위치부터 그 아래의 코드 실행X
+drop table if exists `students`;
+drop table if exists `integer`;
+
+# 5. 테이블 목록 조회(show tables)
+# : 모든 데이터베이스에 있는 모든 테이블의 목록을 조회
+# show tables [from database_name];
+show tables from sys;
+
+# 데이터베이스와 테이블을 동시 지정
+# : 테이블의 위치를 명확하게 전달하기 위해 (.)기호를 사용하여 경로를 지정
+# : 데이터베이스.테이블
+use sys;
+create database online_shop;
+create table `online_shop`.`users` (
+	username varchar(50),
+    password varchar(50)
+);
+
+drop database `example`;
+drop database `online_shop`;
