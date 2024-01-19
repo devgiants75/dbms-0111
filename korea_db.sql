@@ -32,6 +32,10 @@ create table `korea_db`.`buy` (
     quantity smallint NOT NULL
 );
 
+# 제약조건 추가
+# member 테이블의 member_id와 (기본 테이블)
+# buy 테이블의 member_id를 외래 키 지정 (참조 테이블)
+
 INSERT INTO `korea_db`.`member` (name, gender, area_code, grade, contact, points, join_date)
 VALUES
 ('Kim Yuna', 'Female', '부산', 'Gold', '010-1234-5678', 500, '2024-01-01'),
