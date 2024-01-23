@@ -24,12 +24,13 @@ create table `korea_db`.`member` (
 );
 
 create table `korea_db`.`buy` (
-	purchase_id int primary key NOT NULL,
-    member_id char(8) NOT NULL,
+	purchase_id int auto_increment primary key,
+    member_id int NOT NULL,
     product_code char(6) NOT NULL,
     purchase_date date NOT NULL,
     amount int NOT NULL,
-    quantity smallint NOT NULL
+    quantity smallint NOT NULL,
+    foreign key (member_id) references `member`(member_id)
 );
 
 # 제약조건 추가
@@ -59,6 +60,5 @@ VALUES
 (6, 'P0006', '2024-01-20', 35000, 5),
 (7, 'P0007', '2024-01-21', 12000, 1),
 (8, 'P0008', '2024-01-22', 13000, 2);
-
 
 drop database `korea_db`;
