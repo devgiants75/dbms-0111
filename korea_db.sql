@@ -38,26 +38,27 @@ create table `korea_db`.`buy` (
 
 INSERT INTO `korea_db`.`member` (name, gender, area_code, grade, contact, points, join_date)
 VALUES
-('Kim Yuna', 'Female', '부산', 'Gold', '010-1234-5678', 500, '2024-01-01'),
-('Lee Minho', 'Male', '서울', 'Silver', '010-2345-6789', 300, '2024-01-02'),
-('Park Jisung', 'Male', '서울', 'Bronze', '010-3456-7890', null, '2024-01-03'),
-('Choi Siwon', 'Male', '경기', 'Platinum', '010-4567-8901', 700, '2024-01-04'),
-('Yoo Jae Suk', 'Male', '부산', 'Bronze', '010-5678-9012', null, '2024-01-05'),
-('Kang Hodong', 'Male', '부산', 'Bronze', '010-6789-0123', 200, '2024-01-06'),
-('Song Hye Kyo', 'Female', '경기', 'Gold', '010-7890-1234', 500, '2024-01-07'),
-('Bae Suzy', 'Female', '대전', 'Silver', '010-8901-2345', 300, '2024-01-08'),
-('Kim Soo Hyun', 'Male', '대전', 'Platinum', '010-9012-3456', 800, '2024-01-09'),
-('Jun Ji Hyun', 'Female', '울산', 'Diamond', '010-0123-4567', 1200, '2024-01-10');
+('Jin', 'Male', 'SEOUL', 'Bronze', '010-1234-5678', 100, '2023-01-01'),
+('Hana', 'Female', 'BUSAN', 'Silver', '010-2345-6789', 200, '2022-01-02'),
+('Sung', 'Male', 'DAEJEON', 'Gold', '010-3456-7890', 300, '2020-01-03'),
+('Minji', 'Female', 'BUSAN', 'Platinum', '010-4567-8901', 400, '2022-01-04'),
+('Joon', 'Male', 'DAEJEON', 'Diamond', '010-5678-9012', 500, '2019-01-05'),
+('Yuna', 'Female', 'BUSAN', 'Bronze', '010-6789-0123', null, '2024-01-06'),
+('Hyun', 'Male', 'SEOUL', 'Silver', '010-7890-1234', 150, '2024-01-07'),
+('Eunji', 'Female', 'BUSAN', 'Gold', '010-8901-2345', null, '2024-01-08'),
+('Kyung', 'Male', 'JEJU', 'Platinum', '010-9012-3456', 350, '2022-01-09'),
+('Sooyoung', 'Female', 'JEJU', 'Diamond', '010-0123-4567', 600, '2018-01-10');
 
-INSERT INTO `korea_db`.`buy` (purchase_id, member_id, product_code, purchase_date, amount, quantity)
+INSERT INTO `korea_db`.`buy` (member_id, product_code, purchase_date, amount, quantity)
 VALUES
-(1, '1', 'P001', '2024-01-15', 10000, 2),
-(2, '1', 'P002', '2024-01-16', 20000, 1),
-(3, '4', 'P003', '2024-01-15', 15000, 2),
-(4, '4', 'P004', '2024-01-16', 25000, 1),
-(5, '4', 'P005', '2024-01-17', 30000, 3),
-(6, '7', 'P006', '2024-01-15', 5000, 1),
-(7, '8', 'P007', '2024-01-16', 8000, 1),
-(8, '10', 'P008', '2024-01-17', 12000, 1);
+(1, 'P0001', '2024-01-15', 10000, 1),
+(2, 'P0002', '2024-01-16', 35000, 2),
+(3, 'P0003', '2024-01-17', 20000, 1),
+(4, 'P0004', '2024-01-18', 15000, 3),
+(5, 'P0005', '2024-01-19', 40000, 1),
+(6, 'P0006', '2024-01-20', 35000, 5),
+(7, 'P0007', '2024-01-21', 12000, 1),
+(8, 'P0008', '2024-01-22', 13000, 2);
+
 
 drop database `korea_db`;
