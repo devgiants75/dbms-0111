@@ -91,9 +91,55 @@ group by
 having 
 	count(*) >= 2;
     
-# 지역별 평균 포인트 계산
+# 지역별 평균 포인트 계산 > 평균 포인트가 200이상인 지역만 조회
 select
 	area_code, avg(points) as avg_points
 from
 	`member`
-group by area_code;
+group by area_code
+having
+	avg(points) > 200;
+  
+# 이름(name)으로 알파벳 순 정렬 - order by
+select * from `member` order by name asc;
+
+# 3번째 부터 2개의 행 조회 - limit
+select * from `member` limit 2, 2;
+
+# 포인트(points)가 가장 높은 상위 3명의 회원 조회 - limit
+select * from `member` order by points desc limit 3; 
+
+# 서로 다른 등급(grade) 목록 조회 - distinct
+select distinct grade from `member`;
+
+# 지역별(area_code) 최대 포인트 조회 - group by
+select 
+	area_code, max(points) as max_points
+from 
+	`member`
+group by
+	area_code;
+
+# 성별(gender)에 따른 평균 포인트 조회 - group by
+select 
+	gender, avg(points) as avg_points
+from
+	`member`
+group by
+	gender;
+
+# 평균 포인트가 250 이상인 등급만 조회 - having
+select grade, avg(points) as avg_points
+from `member`
+group by
+	grade
+having avg(points) >= 250;
+
+# 등급별 최소 포인트가 100이상인 그룹 조회 - having
+select
+	grade, min(points)
+from
+	`member`
+group by
+	grade
+having min(points) >= 100;
