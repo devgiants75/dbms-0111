@@ -105,6 +105,7 @@ select * from `member` order by name asc;
 
 # 3번째 부터 2개의 행 조회 - limit
 select * from `member` limit 2, 2;
+select * from `member` limit 2 offset 2;
 
 # 포인트(points)가 가장 높은 상위 3명의 회원 조회 - limit
 select * from `member` order by points desc limit 3; 
