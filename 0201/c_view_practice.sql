@@ -65,3 +65,5 @@ from
 	studentCourse sc
 inner join students s on sc.studentId = s.studentId
 inner join courses c on sc.courseId = c.courseId;
+
+select * from studentCourseView;
