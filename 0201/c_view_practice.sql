@@ -54,3 +54,14 @@ VALUES (1, 101),
        (2, 102),
        (3, 103),
        (4, 104);
+       
+create view studentCourseView as
+select
+	s.firstName as studentFirstName,
+    s.lastName as studentLastName,
+    c.courseName,
+    c.instructor
+from
+	studentCourse sc
+inner join students s on sc.studentId = s.studentId
+inner join courses c on sc.courseId = c.courseId;
