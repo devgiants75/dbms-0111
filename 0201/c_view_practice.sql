@@ -1,6 +1,8 @@
 # c_view_practice
 # 뷰 연습 문제 #
 
+create database school;
+use school;
 #! school 데이터베이스 생성
 #? Students 테이블 생성
 # studentId: 정수, 기본키
@@ -28,9 +30,9 @@ CREATE TABLE Courses (
 );
 
 create table StudentCourse (
-	studentCourseId int primary key,
     studentId int,
     courseId int,
+    primary key (studentId, courseId),
     foreign key (studentId) references students(studentId),
     foreign key (courseId) references courses(courseId)
 );
