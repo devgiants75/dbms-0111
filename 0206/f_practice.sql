@@ -14,8 +14,45 @@ school_db 데이터베이스 생성
 학생 ID와 강의 ID는 수강 테이블에서 외래 키로 설정되어야 하며, 학생, 강의, 수강 사이의 다대다 관계 작성.
 
 */
+CREATE DATABASE school_db;
+USE school_db;
 
-/*
+-- Students 테이블 생성
+CREATE TABLE Students (
+    학생ID INT PRIMARY KEY,
+    이름 VARCHAR(100),
+    전공 VARCHAR(100),
+    입학년도 INT
+);
+
+-- Professors 테이블 생성
+CREATE TABLE Professors (
+    교수ID INT PRIMARY KEY,
+    이름 VARCHAR(100),
+    학과 VARCHAR(100),
+    사무실위치 VARCHAR(100)
+);
+
+-- Courses 테이블 생성
+CREATE TABLE Courses (
+    강의ID INT PRIMARY KEY,
+    강의명 VARCHAR(100),
+    담당교수ID INT,
+    학점수 INT,
+    FOREIGN KEY (담당교수ID) REFERENCES Professors(교수ID)
+);
+
+-- Enrollments 테이블 생성
+CREATE TABLE Enrollments (
+    수강ID INT PRIMARY KEY,
+    학생ID INT,
+    강의ID INT,
+    수강년도 INT,
+    학기 INT,
+    FOREIGN KEY (학생ID) REFERENCES Students(학생ID),
+    FOREIGN KEY (강의ID) REFERENCES Courses(강의ID)
+);
+
 -- Students
 INSERT INTO Students VALUES (1, 'Alice', 'Computer Science', 2020);
 INSERT INTO Students VALUES (2, 'Bob', 'Mathematics', 2021);
@@ -36,8 +73,20 @@ INSERT INTO Enrollments VALUES (1, 1, 1, 2023, 1);
 INSERT INTO Enrollments VALUES (2, 2, 2, 2023, 1);
 INSERT INTO Enrollments VALUES (3, 3, 3, 2023, 1);
 
-
+/*
 전공이 컴퓨터 과학인 학생들의 이름과 입학년도를 조회하는 SQL 명령문을 작성
 담당 교수 ID가 2인 강의의 강의명과 학점 수를 조회하는 SQL 명령문을 작성
 2023년도 1학기에 수강하는 학생들의 목록을 조회하는 SQL 명령문을 작성 (학생 ID와 이름을 포함)
 */ 
+SELECT 이름, 입학년도
+FROM Students
+WHERE 전공 = 'Computer Science';
+
+SELECT 강의명, 학점수
+FROM Courses
+WHERE 담당교수ID = 2;
+
+SELECT s.학생ID, s.이름
+FROM Students s
+JOIN Enrollments e ON s.학생ID = e.학생ID
+WHERE e.수강년도 = 2023 AND e.학기 = 1;
